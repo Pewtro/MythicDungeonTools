@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  workflow_dispatch: # run manually
+  push:
+    branches:
+      - master
+    tags:
+      - "*"
+      - "!**-alpha**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 500
+
+      - name: Create Retail Package
+        uses: BigWigsMods/packager@master
+        env:
+          GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
