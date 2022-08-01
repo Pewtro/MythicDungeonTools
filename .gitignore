@@ -1,6 +1,4 @@
 .idea/
-libs/*
-!libs/LibDeflate
 venv
 python/combatLogReader/__pycache__
 python/__pycache__
