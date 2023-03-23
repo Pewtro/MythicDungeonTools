@@ -2375,8 +2375,10 @@ function MDT:HideAllDialogs()
   MDT.main_frame.RenameFrame:Hide()
   MDT.main_frame.ClearConfirmationFrame:Hide()
   MDT.main_frame.DeleteConfirmationFrame:Hide()
-  MDT.main_frame.settingsFrame.CustomColorFrame:Hide()
-  MDT.main_frame.settingsFrame:Hide()
+  if MDT.main_frame.settingsFrame then
+    MDT.main_frame.settingsFrame.CustomColorFrame:Hide()
+    MDT.main_frame.settingsFrame:Hide()
+  end
   if MDT.main_frame.ConfirmationFrame then MDT.main_frame.ConfirmationFrame:Hide() end
 end
 
@@ -4678,7 +4680,7 @@ function MDT:CreateCoroutineHandler()
     local hasData = true;
 
     -- Resume
-    while (debugprofilestop() - start < max(1,((InCombatLockdown() and IsInInstance()) and 8 or 16) - (elapsed * 1000)) and hasData) do
+    while (debugprofilestop() - start < max(1,((InCombatLockdown() and IsInInstance()) and 8 or 40) - (elapsed * 1000)) and hasData) do
       -- Stop loop without data
       hasData = false;
 
